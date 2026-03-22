@@ -1,6 +1,6 @@
 # makan_bergizi_murah
 
-A new Flutter project
+A new Flutter project.
 
 ## Getting Started
 
