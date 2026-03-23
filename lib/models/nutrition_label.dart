@@ -48,8 +48,8 @@ class NutritionLabel {
     if (servingSize != null) buf.writeln('Takaran Saji: $servingSize');
     if (servingsPerPackage != null) buf.writeln('Sajian/Kemasan: $servingsPerPackage');
     buf.writeln('───────────────────────────────');
-    if (energiTotal != null) buf.writeln('Energi Total        : ${energiTotal} kkal');
-    if (energiDariLemak != null) buf.writeln('Energi dari Lemak   : ${energiDariLemak} kkal');
+    if (energiTotal != null) buf.writeln('Energi Total        : $energiTotal kkal');
+    if (energiDariLemak != null) buf.writeln('Energi dari Lemak   : $energiDariLemak kkal');
     buf.writeln('───────────────────────────────');
     buf.writeln('Kandungan per Sajian         %AKG');
 

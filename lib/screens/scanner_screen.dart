@@ -94,9 +94,10 @@ class _ScannerScreenState extends State<ScannerScreen> {
 
   Future<void> _shareResult() async {
     if (_result == null) return;
-    await SharePlus.instance.share(
-      ShareParams(text: _result!.toFormattedText(), subject: 'Informasi Nilai Gizi'),
-    );
+    await SharePlus.instance.share(ShareParams(
+      text: _result!.toFormattedText(),
+      subject: 'Informasi Nilai Gizi',
+    ));
   }
 
   void _reset() {
@@ -256,7 +257,7 @@ class _ScanPanel extends StatelessWidget {
         const SizedBox(height: 24),
 
         // Example label format info
-        _BpomFormatInfo(),
+        const _BpomFormatInfo(),
       ],
     );
   }
@@ -284,13 +285,15 @@ class _Step extends StatelessWidget {
 }
 
 class _BpomFormatInfo extends StatelessWidget {
+  const _BpomFormatInfo();
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        border: Border.all(color: theme.colorScheme.outline.withOpacity(0.3)),
+        border: Border.all(color: theme.colorScheme.outline.withValues(alpha: 0.3)),
         borderRadius: BorderRadius.circular(14),
       ),
       child: Column(
@@ -352,7 +355,7 @@ class _ResultViewState extends State<_ResultView> {
           children: [
             const Icon(Icons.check_circle, color: Colors.green, size: 20),
             const SizedBox(width: 6),
-            Text('Berhasil dibaca!', style: theme.textTheme.titleMedium?.copyWith(color: Colors.green[700], fontWeight: FontWeight.bold)),
+            Text('Berhasil dibaca!', style: theme.textTheme.titleMedium?.copyWith(color: const Color(0xFF388E3C), fontWeight: FontWeight.bold)),
           ],
         ),
         const SizedBox(height: 16),
@@ -410,7 +413,7 @@ class _ResultViewState extends State<_ResultView> {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: theme.colorScheme.surfaceContainerHighest,
+                color: theme.colorScheme.surfaceContainer,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: SelectableText(
@@ -497,7 +500,7 @@ class _NutritionCard extends StatelessWidget {
           const Divider(height: 1, thickness: 2, color: Colors.black),
 
           // Table header
-          _TableHeader(),
+          const _TableHeader(),
 
           const Divider(height: 1, thickness: 0.5, color: Colors.black38),
 
@@ -517,7 +520,7 @@ class _NutritionCard extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             child: Text(
               '%AKG = Angka Kecukupan Gizi\nberdasarkan kebutuhan energi 2150 kkal.\nKebutuhan energi Anda mungkin lebih tinggi atau lebih rendah.',
-              style: TextStyle(fontSize: 9, color: Colors.grey[700], height: 1.4),
+              style: const TextStyle(fontSize: 9, color: Color(0xFF616161), height: 1.4),
             ),
           ),
         ],
@@ -527,12 +530,14 @@ class _NutritionCard extends StatelessWidget {
 }
 
 class _TableHeader extends StatelessWidget {
+  const _TableHeader();
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       child: Row(
-        children: const [
+        children: [
           Expanded(
             flex: 5,
             child: Text('', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
