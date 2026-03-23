@@ -1,5 +1,5 @@
 name: makan_bergizi_murah
-description: "Aplikasi untuk menemukan makanan bergizi dengan harga terjangkau."
+description: "Scan tabel informasi nilai gizi BPOM pada kemasan produk."
 publish_to: 'none'
 
 version: 1.0.0+1

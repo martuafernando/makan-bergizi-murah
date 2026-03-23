@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';
-import 'screens/menu_screen.dart';
-import 'screens/calculator_screen.dart';
 import 'screens/scanner_screen.dart';
 
 void main() {
@@ -14,7 +11,7 @@ class MakanBergiziApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Makan Bergizi Murah',
+      title: 'Scan Nilai Gizi',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
@@ -22,62 +19,8 @@ class MakanBergiziApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
         useMaterial3: true,
-        fontFamily: 'Roboto',
       ),
-      home: const MainNavigation(),
-    );
-  }
-}
-
-class MainNavigation extends StatefulWidget {
-  const MainNavigation({super.key});
-
-  @override
-  State<MainNavigation> createState() => _MainNavigationState();
-}
-
-class _MainNavigationState extends State<MainNavigation> {
-  int _currentIndex = 0;
-
-  final List<Widget> _screens = const [
-    HomeScreen(),
-    MenuScreen(),
-    CalculatorScreen(),
-    ScannerScreen(),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: _screens[_currentIndex],
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _currentIndex,
-        onDestinationSelected: (index) {
-          setState(() => _currentIndex = index);
-        },
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home),
-            label: 'Beranda',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.restaurant_menu_outlined),
-            selectedIcon: Icon(Icons.restaurant_menu),
-            label: 'Menu',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.calculate_outlined),
-            selectedIcon: Icon(Icons.calculate),
-            label: 'Kalkulator',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.document_scanner_outlined),
-            selectedIcon: Icon(Icons.document_scanner),
-            label: 'Scan Gizi',
-          ),
-        ],
-      ),
+      home: const ScannerScreen(),
     );
   }
 }
