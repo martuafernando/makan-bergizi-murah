@@ -57,7 +57,7 @@ class NutritionLabel {
       if (row == null) return;
       final prefix = indent ? '  ' : '';
       final pct = row.akgPercent != null ? '${row.akgPercent}%' : '-';
-      buf.writeln('${prefix}$label'.padRight(28) + '${row.amount} ${row.unit}'.padRight(10) + pct);
+      buf.writeln('$prefix$label'.padRight(28) + '${row.amount} ${row.unit}'.padRight(10) + pct);
     }
 
     writeRow('Lemak Total', lemakTotal);
@@ -74,7 +74,7 @@ class NutritionLabel {
       buf.writeln('───────────────────────────────');
       for (final v in vitaminsAndMinerals) {
         final pct = v.akgPercent != null ? '${v.akgPercent}%' : '-';
-        buf.writeln('${v.name ?? ''}'.padRight(28) + '${v.amount} ${v.unit}'.padRight(10) + pct);
+        buf.writeln((v.name ?? '').padRight(28) + '${v.amount} ${v.unit}'.padRight(10) + pct);
       }
     }
 

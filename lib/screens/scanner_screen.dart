@@ -94,10 +94,10 @@ class _ScannerScreenState extends State<ScannerScreen> {
 
   Future<void> _shareResult() async {
     if (_result == null) return;
-    await SharePlus.instance.share(ShareParams(
-      text: _result!.toFormattedText(),
+    await Share.share(
+      _result!.toFormattedText(),
       subject: 'Informasi Nilai Gizi',
-    ));
+    );
   }
 
   void _reset() {
