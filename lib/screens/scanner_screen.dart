@@ -56,9 +56,8 @@ class _ScannerScreenState extends State<ScannerScreen> {
       // Run OCR
       final inputImage = InputImage.fromFile(file);
       final recognized = await _textRecognizer.processImage(inputImage);
-      final rawText = recognized.text;
 
-      if (rawText.trim().isEmpty) {
+      if (recognized.text.trim().isEmpty) {
         setState(() {
           _isScanning = false;
           _error = 'Tidak ada teks yang terdeteksi. Pastikan gambar jelas dan cukup cahaya.';
@@ -66,12 +65,13 @@ class _ScannerScreenState extends State<ScannerScreen> {
         return;
       }
 
-      // Parse nutrition label
-      final label = NutritionParser.parse(rawText);
+      // Parse nutrition label using bounding-box-aware row reconstruction
+      final label = NutritionParser.parse(recognized);
 
       setState(() {
         _isScanning = false;
-        _rawOcrText = rawText;
+        // Show reconstructed rows (left-to-right per visual row) as raw text
+        _rawOcrText = label.rawText;
         _result = label;
       });
     } catch (e) {
@@ -407,7 +407,7 @@ class _ResultViewState extends State<_ResultView> {
           TextButton.icon(
             onPressed: () => setState(() => _showRaw = !_showRaw),
             icon: Icon(_showRaw ? Icons.expand_less : Icons.expand_more, size: 18),
-            label: Text(_showRaw ? 'Sembunyikan teks mentah OCR' : 'Lihat teks mentah OCR'),
+            label: Text(_showRaw ? 'Sembunyikan teks OCR' : 'Lihat teks OCR (per baris visual)'),
           ),
           if (_showRaw) ...[
             Container(
