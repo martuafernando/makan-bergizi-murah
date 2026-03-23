@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'screens/menu_screen.dart';
 import 'screens/calculator_screen.dart';
+import 'screens/scanner_screen.dart';
 
 void main() {
   runApp(const MakanBergiziApp());
@@ -42,6 +43,7 @@ class _MainNavigationState extends State<MainNavigation> {
     HomeScreen(),
     MenuScreen(),
     CalculatorScreen(),
+    ScannerScreen(),
   ];
 
   @override
@@ -68,6 +70,11 @@ class _MainNavigationState extends State<MainNavigation> {
             icon: Icon(Icons.calculate_outlined),
             selectedIcon: Icon(Icons.calculate),
             label: 'Kalkulator',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.document_scanner_outlined),
+            selectedIcon: Icon(Icons.document_scanner),
+            label: 'Scan Gizi',
           ),
         ],
       ),
